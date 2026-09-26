@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Editor } from 'grapesjs';
-import { Check, Download, FileArchive, Save, Sparkles, Upload, X } from 'lucide-react';
+import { Check, Download, FileArchive, Github, Mail, Save, Sparkles, Upload, X } from 'lucide-react';
 import { exportCourse, getCourse, saveCourse, uploadCourse } from './api';
 import { EditorWorkspace } from './EditorWorkspace';
 import { MaintenanceWorkspace } from './MaintenanceWorkspace';
@@ -141,7 +141,7 @@ export default function App() {
           <span className="brand-mark"><Sparkles size={19} /></span>
           <div>
             <h1>H5 SCORM Editor</h1>
-            <span>课程维护工具 · v1.0.3</span>
+            <span>课程维护工具 · v1.0.4</span>
           </div>
         </div>
 
@@ -190,6 +190,14 @@ export default function App() {
         onNotice={setNotice}
         onBeforePreview={handleBeforePreview}
       />}
+
+      <footer className="app-footer">
+        <span>H5 SCORM Editor · 开发者 yung1024</span>
+        <nav aria-label="开发者联系方式">
+          <a href="https://github.com/yung1024" target="_blank" rel="noopener noreferrer"><Github size={15} />GitHub 主页</a>
+          <a href="mailto:yung1024@163.com" target="_blank" rel="noopener noreferrer"><Mail size={15} />yung1024@163.com</a>
+        </nav>
+      </footer>
 
       {notice && (
         <div className={`toast toast-${notice.type}`} role={notice.type === 'error' ? 'alert' : 'status'} aria-live="polite">

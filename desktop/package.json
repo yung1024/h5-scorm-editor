@@ -1,7 +1,7 @@
 {
   "name": "h5-scorm-editor-desktop",
   "productName": "H5 SCORM Editor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "description": "用于轻量维护 H5 与 SCORM 1.2 课程的本地桌面工具",
   "private": true,

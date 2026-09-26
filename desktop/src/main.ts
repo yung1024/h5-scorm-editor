@@ -4,7 +4,7 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { app, BrowserWindow, dialog, session, type WebContents } from 'electron';
+import { app, BrowserWindow, dialog, session, shell, type WebContents } from 'electron';
 import squirrelStartup from 'electron-squirrel-startup';
 
 const currentDir = __dirname;
@@ -67,10 +67,29 @@ function isInternalNavigation(targetUrl: string): boolean {
   }
 }
 
+const externalLinks = new Set([
+  'https://github.com/yung1024',
+  'mailto:yung1024@163.com',
+]);
+
+function openApprovedExternalLink(targetUrl: string): void {
+  if (externalLinks.has(targetUrl)) {
+    void shell.openExternal(targetUrl).catch((error: unknown) => {
+      console.error('无法打开开发者链接。', error);
+    });
+  }
+}
+
 function secureWebContents(contents: WebContents) {
-  contents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  contents.setWindowOpenHandler(({ url }) => {
+    openApprovedExternalLink(url);
+    return { action: 'deny' };
+  });
   contents.on('will-navigate', (event, targetUrl) => {
-    if (!isInternalNavigation(targetUrl)) event.preventDefault();
+    if (!isInternalNavigation(targetUrl)) {
+      event.preventDefault();
+      openApprovedExternalLink(targetUrl);
+    }
   });
   contents.on('will-attach-webview', (event) => event.preventDefault());
 }

@@ -46,7 +46,7 @@
 .maintenance-preview p { font-size:12px; color:var(--text-muted); }
 .maintenance-preview iframe { flex:1; width:100%; min-height:0; border:1px solid var(--border); border-radius:8px; background:white; }
 @media(max-width:780px) {
-  .app-shell { grid-template-rows:auto auto minmax(720px,1fr); }
+  .app-shell { grid-template-rows:auto auto minmax(720px,1fr) auto; }
   .workspace-switch { padding:0 10px; min-height:48px; }
   .workspace-switch span { display:none; }
   .maintenance-columns { grid-template-columns:1fr; grid-template-rows:350px minmax(380px,1fr); }
