@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: Arial, sans-serif; background: #eef2ff; color: #172033; }
+.course-card { width: min(760px, 90vw); padding: 56px; border-radius: 24px; background: white; box-shadow: 0 24px 80px rgba(41, 51, 92, .16); }
+.eyebrow { color: #635bff; font-weight: 700; }
+h1 { margin: 8px 0 16px; font-size: 42px; }
+img { display: block; width: 100%; height: 280px; margin-top: 28px; object-fit: cover; border-radius: 16px; background: #ddd6fe; }

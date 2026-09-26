@@ -1,0 +1,27 @@
+{
+  "name": "h5-scorm-editor",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "desktop"
+  ],
+  "scripts": {
+    "dev": "concurrently -n frontend,backend -c cyan,magenta \"npm run dev -w frontend\" \"npm run dev -w backend\"",
+    "build": "npm run build -w frontend && npm run build -w backend",
+    "desktop:prepare": "npm run build && npm run prepare:resources -w desktop && npm run build -w desktop",
+    "desktop:dev": "npm run desktop:prepare && npm run start -w desktop",
+    "desktop:package": "npm run desktop:prepare && npm run package -w desktop",
+    "desktop:make": "npm run desktop:prepare && npm run make -w desktop",
+    "test": "npm run test -w backend",
+    "test:fixture": "npm run fixture -w backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
